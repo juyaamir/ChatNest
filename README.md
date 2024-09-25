@@ -1,2 +1,8 @@
-# ChatNest
-ChatNest is a real-time chat application designed to create a cozy and engaging platform for users to connect and communicate effortlessly. Built with modern web technologies, ChatNest provides a seamless chatting experience that allows users to send and receive messages instantly, fostering a sense of community and connection.
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
