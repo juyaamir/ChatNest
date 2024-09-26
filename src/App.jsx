@@ -1,12 +1,12 @@
-
+import MainLayout from "./components/MainLayout.jsx"
 
 function App() {
 
 
   return (
-    <>
-      <h1>ChatNest</h1>
-    </>
+    <div>
+      <MainLayout />
+    </div>
   )
 }
 
