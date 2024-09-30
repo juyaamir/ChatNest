@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.outgoing {
+    background-color: yellow;
+    margin-left: auto;
+    text-align: right;
+};
+
+.incoming {
+    background-color: hotpink;
+    margin-right: auto;
+    text-align: left;
+}

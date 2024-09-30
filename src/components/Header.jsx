@@ -1,8 +1,16 @@
 import React from 'react'
 import logo from '../assets/logo.png'
-import { Link } from 'react-router-dom'
 import Chats from '../pages/Chats'
+import { useAuth } from '../Context'
+import { useNavigate, Link } from 'react-router-dom'
 const Header = () => {
+  const { isAuthenticated, setIsAuthenticated } = useAuth();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setIsAuthenticated(false);
+    navigate('/');
+  };
   return (
     <div className='h-20 border-gray-500 border px-6' >
         <div className='flex justify-between items-center h-full flex-wrap'>
@@ -17,7 +25,11 @@ const Header = () => {
               <li><Link to='/chats'>Chats</Link></li>
               <li><Link to='/' >Features</Link></li>
               <li><Link to='/contact-us' >Contact Us</Link></li>
-              <li><Link to= '/login'>Login</Link></li>
+              {!isAuthenticated ? 
+                <li><Link to='/login'>Login</Link></li> : 
+                <li><button onClick={handleLogout}>Logout</button></li>
+              }
+              <li><Link to='/chatapp'>ChatApp</Link></li>
               
             </ul>
           </div>

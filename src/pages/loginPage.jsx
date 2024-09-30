@@ -2,11 +2,12 @@ import React, {useState} from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../Context'
 const LoginPage = () => {
-    const navigate = useNavigate
+    const navigate = useNavigate();
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
-
+    const { setIsAuthenticated } = useAuth();
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -24,9 +25,13 @@ const LoginPage = () => {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:8000/api/users/login', formData);
-            setSuccess(`${response.data.token}`);
+            setSuccess(`${response.data.message}`);
             console.log(response.data);
             localStorage.setItem('token', response.data.token);
+            setIsAuthenticated(true);
+            setTimeout(() => {
+                navigate('/chats');
+            }, 3000);
         } catch (error) {
             setError(`${error}`);
             console.log(error);
@@ -38,12 +43,10 @@ const LoginPage = () => {
         <div className='text-green-500 text-center text-2xl flex flex-col mt-20 items-center justify-center '>
             {success}
         </div>
-    )
-
-
-  return (
+    );
+return (
     <div className='px-2'>
-              <div className=' max-w-96 mx-auto mt-12 rounded-lg '>
+            <div className=' max-w-96 mx-auto mt-12 rounded-lg '>
             <div className='border-b border-b-gray-400 py-4 text-center my-4'>
                 <h1 className='lg:text-4xl md:text-3xl sm:text-xl font-bold'>Sign In</h1>
             </div>
@@ -58,12 +61,18 @@ const LoginPage = () => {
                     <input type="password" id='password' name='password' onChange ={ handleChange } value={ formData.password }
                     className='w-full p-2 border border-gray-400 rounded-lg' placeholder='password' required/>
                 </div>
-                <button className='bg-blue-500 hover:bg-blue-700 py-2  text-white font rounded-full mt-4'>
-                    Register
+                <button className='bg-blue-500 hover:bg-blue-700 py-2  text-white font rounded-lg mt-4'>
+                    Sign In
                 </button>
-            </form>
 
-            <div>
+                <div className='text-center flex flex-col gap-3 mb-4'>
+                    <p className='text-gray-500 my-2'>New to ChatNest?</p>
+                    <Link to='/register' 
+                    className=' hover:text-blue-700 border border-gray-400 py-2 hover:border-blue-700 rounded-md'>Register in 30 seconds</Link>
+                </div>
+                </form>
+
+                <div>
                 <p><Link to='#' className='hover:underline'>Data Protection Policy</Link> | <Link to='#' className='hover:underline'>End-User Agreement</Link></p>
             </div>
         </div>

@@ -11,8 +11,8 @@ const MainLayout = () => {
         <AppRoutes />
       </main>
       
-      <Footer />
-    </div>
+     {/*  <Footer />
+ */}    </div>
   )
 }
 

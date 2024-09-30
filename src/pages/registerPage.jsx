@@ -62,11 +62,13 @@ const RegisterPage = () => {
                     <input type="password" id='password' name='password' onChange ={ handleChange } value={ formData.password }
                     className='w-full p-2 border border-gray-400 rounded-lg' placeholder='password' />
                 </div>
-                <button className='bg-blue-500 hover:bg-blue-700 py-2  text-white font rounded-full mt-4'>
+                <button className='bg-blue-500 hover:bg-blue-700 py-2  text-white font rounded-md mt-4'>
                     Register
                 </button>
+                    <p className='mt-2'>Already have an account? <Link to='/login'                         className='hover:underline'>Login</Link>
+                    </p>
             </form>
-            <div>
+            <div className=''>
                 <p><Link to='#' className='hover:underline'>Data Protection Policy</Link> | <Link to='#' className='hover:underline'>End-User Agreement</Link></p>
             </div>
         </div>

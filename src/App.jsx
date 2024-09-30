@@ -1,12 +1,15 @@
 import MainLayout from "./components/MainLayout.jsx"
-
+import { AuthProvider } from "./Context.jsx"
 function App() {
 
 
   return (
-    <div>
+    
+      <AuthProvider >
+
       <MainLayout />
-    </div>
+      </AuthProvider>
+    
   )
 }
 

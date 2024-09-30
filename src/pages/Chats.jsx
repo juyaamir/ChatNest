@@ -1,9 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
-//get user data from mongodb using axios and useEffect 
-
-
 const Chats = () => {
     const [error, setError] = useState('');
     const [users, setUsers] = useState([]);
@@ -32,7 +29,6 @@ const Chats = () => {
     if (loading) {
         return <div>Loading...</div>;
     };
-
     if (error) {
         return <div>{error}</div>;
     };
